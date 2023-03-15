@@ -26,5 +26,4 @@ public:
 	void setCordY(int cordY);
 
 	void showYourself();
-	
 };

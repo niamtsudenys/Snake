@@ -1,6 +1,7 @@
 #include "screen.h"
 #include "game_progress.h"
 
+
 int main()
 {
 	game_progress game;

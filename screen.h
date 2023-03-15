@@ -21,7 +21,8 @@ private:
 
     std::vector<std::string> sms
     {
-        "Play", "Setting", "Exit", "Field >", "< Fon >", "< Frame 1 >", "< Frame 2 >", "< Snake",
+        "Play", "Setting", "Exit", "Field >", "< Fon >", "< Frame 1 >", "< Frame 2 >", "< Snake", "Game over!", "press any key to continue",
+        "Your new record: ", "Your result: ", "Score: "
     };
 
 public:
@@ -34,7 +35,7 @@ public:
         lightblue, lightgreen, lightcyan, lightred, lightmagenta, yellow, white
     };
 
-    std::vector<color> COLOR // dlya funk SETCOLOR()
+    std::vector<color> COLOR  // dlya funk SETCOLOR()
     { 
         color::black, color::blue, color::green, color::cyan, color::red, color::magenta, color::brown, color::lightgray, color::darkgray,
         color::lightblue, color::lightgreen, color::lightcyan, color::lightred, color::lightmagenta, color::yellow, color::white
@@ -63,9 +64,15 @@ public:
     int getColorFrame1();
     int getColorFrame2();
     int getColorSnake();
+    std::string getSms(int index);
 
     void screenName(int buttonIsPressed);
     void clearStr(int i = 1);
     void colorСhoice(int checkColor);
     void drawSeparatePartsOfTheScreen(int buttonIsPressed, int& checkColor);
+
+    void navigation();
+
+    void liveScore(int score);
+    void getRecordScore(int score, bool record);
 };

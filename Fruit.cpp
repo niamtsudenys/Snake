@@ -18,7 +18,7 @@ void Fruit::addFruit(int colorField)
 	do
 	{
 		fruitColor = allColorFruit.at(rand() % allColorFruit.size());
-	} while (fruitColor == colorField); // cicl povtoryaetsya esli tsvet fructa sovpadaet s tsvetom polya
+	} while (fruitColor == colorField);    // cicl povtoryaetsya esli tsvet fructa sovpadaet s tsvetom polya
 
 	if (fruitCordX % 2 != 0)
 		fruitCordX = fruitCordX - 1;

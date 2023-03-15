@@ -14,7 +14,9 @@ void Snake::setCordY(int cordY) { this->cordY = cordY; }
 void Snake::showYourself()
 {
 	s.gotoxy(cordX, cordY);
+
 	s.set_col(s.COLOR.at(color), s.COLOR.at(color));
+
 	std::cout << "SS";
 
 	s.gotoxy(119, 0);

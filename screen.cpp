@@ -170,13 +170,23 @@ void screen::initialPage()
 void screen::buttons(int& buttonIsPressed)
 {
 	gotoxy(120 / 2 - sms.at(0).length() / 2, 13);
+
 	if (buttonIsPressed == 0)
-		set_col(color::red, COLOR.at(colorField));
+	{
+		if (colorField != 4)                             // esli knopka v tvet polya to menyaem tsvet knopki
+		{
+			set_col(color::red, COLOR.at(colorField));
+		}
+		else
+		{
+			set_col(color::green, COLOR.at(colorField));
+		}
+	}
 	else
 	{
 		if (colorField == 1)                             // esli knopka v tvet polya to menyaem tsvet knopki
 		{
-			set_col(color::lightgreen, COLOR.at(colorField));
+			set_col(color::black, COLOR.at(colorField));
 		}
 		else
 		{
@@ -186,35 +196,57 @@ void screen::buttons(int& buttonIsPressed)
 	std::cout << sms.at(0);
 
 	gotoxy(120 / 2 - sms.at(1).length() / 2, 16);
+
 	if (buttonIsPressed == 1)
-		set_col(color::red, COLOR.at(colorField));
+	{
+		if (colorField != 4)                             // esli knopka v tvet polya to menyaem tsvet knopki
+		{
+			set_col(color::red, COLOR.at(colorField));
+		}
+		else
+		{
+			set_col(color::green, COLOR.at(colorField));
+		}
+	}
 	else
 	{
 		if (colorField == 1)                             // esli knopka v tvet polya to menyaem tsvet knopki
 		{
-			set_col(color::lightgreen, COLOR.at(colorField));
+			set_col(color::black, COLOR.at(colorField));
 		}
 		else
 		{
 			set_col(color::blue, COLOR.at(colorField));
 		}
 	}
+
 	std::cout << sms.at(1);
 
 	gotoxy(120 / 2 - sms.at(2).length() / 2, 19);
+
 	if (buttonIsPressed == 2)
-		set_col(color::red, COLOR.at(colorField));
+	{
+		if (colorField != 4)                             // esli knopka v tvet polya to menyaem tsvet knopki
+		{
+			set_col(color::red, COLOR.at(colorField));
+		}
+		else
+		{
+			set_col(color::green, COLOR.at(colorField));
+		}
+	}
 	else
 	{
 		if (colorField == 1)                                  // esli knopka v tvet polya to menyaem tsvet knopki
 		{
-			set_col(color::lightgreen, COLOR.at(colorField));
+			set_col(color::black, COLOR.at(colorField));
 		}
 		else
 		{
 			set_col(color::blue, COLOR.at(colorField));
 		}
 	}
+
 	std::cout << sms.at(2);
 
 	gotoxy(119, 0);
@@ -230,21 +262,25 @@ int screen::getColorField() { return colorField; }
 int screen::getColorFrame1() { return colorFrame1; }
 int screen::getColorFrame2() { return colorFrame2; }
 int screen::getColorSnake() { return colorSnake; }
+std::string screen::getSms(int index) { return sms.at(index); }
 
 void screen::screenName(int buttonIsPressed)
 {
 	clearStr();
 
-	gotoxy(50, 16);
 	if (colorField == 0)
-	{
-		set_col(color::white, COLOR.at(colorField));  // esli pole chernogo tsveta to vyvodim bukvy belogo tsveta
-	}
+		set_col(color::white, COLOR.at(colorField));   // esli pole chernogo tsveta to vyvodim bukvy belogo tsveta
 	else
-	{
 		set_col(color::black, COLOR.at(colorField));
-	}
 	
+	gotoxy(70, 26);
+	std::cout << "Esc - back";
+
+	gotoxy(40, 26);
+	std::cout << "Enter - select";
+
+	gotoxy(50, 16);
+
 	switch (buttonIsPressed)
 	{
 	case 0:                                    
@@ -263,6 +299,8 @@ void screen::screenName(int buttonIsPressed)
 		std::cout << sms.at(7);
 		break;
 	}
+
+	gotoxy(119, 0);
 }
 
 void screen::clearStr(int i)
@@ -274,14 +312,11 @@ void screen::clearStr(int i)
 		gotoxy(50, 16);
 
 		for (int i = 0; i < 14; ++i)
-		{
 			std::cout << " ";
-		}
 	}
 	else
 	{
 		gotoxy(63, 16);
-
 		std::cout << "      ";
 	}
 }
@@ -299,6 +334,8 @@ void screen::colorÑhoice(int checkColor)
 	gotoxy(67, 16);
 	set_col(COLOR.at(0), COLOR.at(colorField));
 	std::cout << " >";
+
+	gotoxy(119, 0);
 }
 
 void screen::drawSeparatePartsOfTheScreen(int buttonIsPressed, int& checkColor)
@@ -329,4 +366,92 @@ void screen::drawSeparatePartsOfTheScreen(int buttonIsPressed, int& checkColor)
 		paintSnake();
 		break;
 	}
+}
+
+void screen::navigation()
+{
+	if (colorFonConsole == 0)
+		set_col(COLOR.at(15), COLOR.at(colorFonConsole));
+	else
+		set_col(COLOR.at(0), COLOR.at(colorFonConsole));
+
+	gotoxy(90, 13);
+	std::cout << "a <   > d";
+
+	gotoxy(94, 14);
+	std::cout << "v";
+
+	gotoxy(94, 15);
+	std::cout << "s";
+
+	gotoxy(94, 12);
+	std::cout << "^";
+
+	gotoxy(94, 11);
+	std::cout << "w";
+
+	gotoxy(90, 18);
+	std::cout << "Spase - pause";
+}
+
+void screen::liveScore(int score)
+{
+	if (colorFonConsole == 4)
+		set_col(COLOR.at(0), COLOR.at(colorFonConsole));
+	else
+		set_col(COLOR.at(4), COLOR.at(colorFonConsole));
+
+	gotoxy(55, 28);
+	std::cout << sms.at(12);
+
+	if (colorFonConsole == 0)
+		set_col(COLOR.at(15), COLOR.at(colorFonConsole));
+	else
+		set_col(COLOR.at(0), COLOR.at(colorFonConsole));
+
+	std::cout << score;
+
+	gotoxy(119, 0);
+}
+
+void screen::getRecordScore(int score, bool record)
+{
+	if (record && score)        
+	{
+		gotoxy(120 / 2 - sms.at(10).length() / 2 - 2, 22);
+
+		if (colorField == 1)
+			set_col(COLOR.at(0), COLOR.at(colorField));
+		else
+			set_col(COLOR.at(1), COLOR.at(colorField));
+
+		std::cout << sms.at(10);
+
+		if (colorField == 4)
+			set_col(COLOR.at(0), COLOR.at(colorField));
+		else
+			set_col(COLOR.at(4), COLOR.at(colorField));
+
+		std::cout << score;
+	}
+	else
+	{
+		gotoxy(120 / 2 - sms.at(11).length() / 2 - 2, 22);
+
+		if (colorField == 1)
+			set_col(COLOR.at(0), COLOR.at(colorField));
+		else
+			set_col(COLOR.at(1), COLOR.at(colorField));
+
+		std::cout << sms.at(11);
+
+		if (colorField == 4)
+			set_col(COLOR.at(0), COLOR.at(colorField));
+		else
+			set_col(COLOR.at(4), COLOR.at(colorField));
+
+		std::cout << score;
+	}
+
+	gotoxy(119, 0);
 }

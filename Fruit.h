@@ -4,11 +4,13 @@
 class Fruit
 {
 private:
+
 	int fruitCordX;
 	int fruitCordY;
 	int fruitColor;
 
 	screen scr;
+
 	std::vector <int> allColorFruit{ 1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14, 15 };
 
 public:
